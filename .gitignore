@@ -7,3 +7,6 @@
 "*.png" 
 "__pycache__/" 
 "static/uploads/*" 
+*.pyc
+venv/
+.env
