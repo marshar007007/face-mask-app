@@ -8,7 +8,7 @@ app = Flask(__name__)
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 # Load model 
-model = tf.keras.models.load_model("face_mask_model.h5")
+model = tf.keras.models.load_model("face_mask_model.h5", compile=False)
 
 # Class names matching your training setup
 # 0 = with_mask, 1 = without_mask  (alphabetical order from image_dataset_from_directory)
@@ -31,7 +31,7 @@ def predict_image(img_path):
     img_array = tf.expand_dims(img_array, axis=0)  # shape: (1, 128, 128, 3)
 
     # Predict with training=False → augmentation + dropout OFF
-    score = float(model(img_array, training=False)[0][0])
+    score = float(model.predict(img_array, verbose=0)[0][0])
 
     # score > 0.5 → without_mask (class 1)
     # score ≤ 0.5 → with_mask    (class 0)
