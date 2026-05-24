@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Image Classifier</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #324879, #324879);
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            margin: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        input[type=file] {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        img {
+            margin-top: 20px;
+            width: 200px;
+            border-radius: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload Image to classify wearing mask or not</h2>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <br>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if filename %}
+            <img src="{{ url_for('static', filename='uploads/' + filename) }}">
+            <div class="result">
+                <p><b>Prediction:</b> {{ prediction }}</p>
+                <p><b>Confidence:</b> {{ confidence }}%</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
