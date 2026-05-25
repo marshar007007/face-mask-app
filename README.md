@@ -1,4 +1,4 @@
-# Face Mask Detection — CNN Binary Classifier
+# Face Mask Detection - CNN Binary Classifier
 
 A deep learning project that detects whether a person 
 is wearing a face mask using Convolutional Neural Networks (CNN)
